@@ -165,11 +165,91 @@
       <p class="download-subtitle">CreateUF.mcaddon • Minecraft Bedrock Edition</p>
     </section>
 
+    <!-- Installation Requirements Warning -->
+    <section class="content-section" id="requirements">
+      <div class="section-card warning-card">
+        <div class="section-header">
+          <div class="section-icon warning">⚠️</div>
+          <h2 class="section-title">IMPORTANT! Installation Requirements</h2>
+        </div>
+        <div class="section-body">
+          <p>To use this addon, ensure you follow these steps exactly:</p>
+          <ol class="requirements-list">
+            <li>
+              <span class="req-step">1</span>
+              <span>Create a new world or edit an existing one.</span>
+            </li>
+            <li>
+              <span class="req-step">2</span>
+              <span>Open the <strong>Experiments</strong> section.</span>
+            </li>
+            <li>
+              <span class="req-step">3</span>
+              <span>Turn on <strong>Beta APIs</strong>. <em class="warning-text">(The addon will not work without this enabled!)</em></span>
+            </li>
+            <li>
+              <span class="req-step">4</span>
+              <span>For players around versions <strong>26.20+</strong>, you must also enable the <strong>Upcoming Creator Features</strong> toggle.</span>
+            </li>
+          </ol>
+          <div class="warning-note">
+            <span class="warning-note-icon">💡</span>
+            <p><strong>For Create Addon Players by Vatonage:</strong> The app can sometimes be buggy with caching. Make sure to delete your old downloaded addon (CREATE ADDON BY VATONAGE) from your files first before downloading and importing the new one.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section class="content-section" id="comments">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon comments-icon">💬</div>
+          <h2 class="section-title">Comments</h2>
+        </div>
+        <div class="section-body">
+          <!-- Comment Form -->
+          <form class="comment-form" id="comment-form">
+            <div class="form-group">
+              <label for="comment-name" class="form-label">YOUR NAME</label>
+              <input
+                type="text"
+                id="comment-name"
+                class="form-input"
+                placeholder="Enter your name..."
+                maxlength="50"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <label for="comment-text" class="form-label">COMMENT</label>
+              <textarea
+                id="comment-text"
+                class="form-input form-textarea"
+                placeholder="Write your comment..."
+                maxlength="400"
+                required
+              ></textarea>
+              <div class="char-counter"><span id="char-count">0</span> / 400</div>
+            </div>
+            <button type="submit" class="post-comment-btn" id="post-comment-btn">
+              <span>✦</span> Post Comment
+            </button>
+          </form>
+
+          <!-- Comments List -->
+          <div class="comments-list" id="comments-list">
+            <!-- Comments will be rendered here by JS -->
+          </div>
+          <p class="no-comments" id="no-comments">No comments yet. Be the first to share your thoughts!</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Footer / Credits -->
     <footer class="footer" id="credits">
       <p>
         Original Create mod by <a href="https://vatonage.com/" target="_blank" rel="noopener noreferrer">Vatonage</a>
-        <span class="heart">❤</span>
       </p>
       <div class="footer-bottom">
         <p>Create: Ultimate Factory — Bedrock Edition Addon © 2025</p>
@@ -177,6 +257,109 @@
     </footer>
 
   </div>
+
+<script>
+  // ===== Comments System (localStorage) =====
+  const STORAGE_KEY = 'createuf_comments';
+
+  function getComments() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveComments(comments) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+  }
+
+  function timeAgo(dateStr) {
+    const now = new Date();
+    const date = new Date(dateStr);
+    const diff = Math.floor((now - date) / 1000);
+    if (diff < 60) return 'just now';
+    if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+    if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+    if (diff < 2592000) return Math.floor(diff / 86400) + 'd ago';
+    return date.toLocaleDateString();
+  }
+
+  function getInitials(name) {
+    return name.trim().split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
+  }
+
+  function getAvatarColor(name) {
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+      hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const hue = Math.abs(hash) % 360;
+    return `hsl(${hue}, 55%, 50%)`;
+  }
+
+  function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function renderComments() {
+    const list = document.getElementById('comments-list');
+    const noComments = document.getElementById('no-comments');
+    const comments = getComments();
+
+    if (comments.length === 0) {
+      list.innerHTML = '';
+      noComments.style.display = 'block';
+      return;
+    }
+
+    noComments.style.display = 'none';
+    list.innerHTML = comments.map((c, i) => `
+      <div class="comment-item" style="animation-delay: ${i * 0.05}s">
+        <div class="comment-avatar" style="background: ${getAvatarColor(c.name)}">
+          ${getInitials(c.name)}
+        </div>
+        <div class="comment-content">
+          <div class="comment-meta">
+            <span class="comment-author">${escapeHTML(c.name)}</span>
+            <span class="comment-time">${timeAgo(c.date)}</span>
+          </div>
+          <p class="comment-text">${escapeHTML(c.text)}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Character counter
+  const textarea = document.getElementById('comment-text');
+  const charCount = document.getElementById('char-count');
+  textarea.addEventListener('input', () => {
+    charCount.textContent = textarea.value.length;
+    charCount.style.color = textarea.value.length > 380 ? '#ef4444' : '';
+  });
+
+  // Form submit
+  document.getElementById('comment-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('comment-name').value.trim();
+    const text = textarea.value.trim();
+    if (!name || !text) return;
+
+    const comments = getComments();
+    comments.unshift({ name, text, date: new Date().toISOString() });
+    saveComments(comments);
+
+    document.getElementById('comment-name').value = '';
+    textarea.value = '';
+    charCount.textContent = '0';
+    renderComments();
+  });
+
+  // Initial render
+  renderComments();
+</script>
 
 </body>
 </html>
