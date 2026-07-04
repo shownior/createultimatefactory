@@ -6,7 +6,7 @@
   <meta name="description" content="Create Addon Minecraft Bedrock — A Minecraft Bedrock Edition addon that introduces new automation possibilities and makes dozens of resources renewable.">
   <meta name="keywords" content="Minecraft, Bedrock Edition, Create mod, addon, automation, factory, mcaddon">
   <meta name="author" content="Create Addon Minecraft Bedrock">
-  <title>Create Addon Minecraft Bedrock</title>
+  <title data-i18n="title">Create Addon Minecraft Bedrock</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="createmodupdate.png">
 </head>
@@ -23,6 +23,11 @@
       <div class="navbar-icon">⚙</div>
       <div class="navbar-title">Create Addon <span>Minecraft Bedrock</span></div>
     </a>
+    <div class="lang-switcher" style="display: flex; gap: 10px; align-items: center; cursor: pointer;">
+      <img src="https://flagcdn.com/w20/br.png" alt="Português" onclick="setLang('pt')" title="Português">
+      <img src="https://flagcdn.com/w20/us.png" alt="English" onclick="setLang('en')" title="English">
+      <img src="https://flagcdn.com/w20/es.png" alt="Español" onclick="setLang('es')" title="Español">
+    </div>
   </nav>
 
   <!-- Main Content -->
@@ -32,7 +37,7 @@
     <section class="hero-section" id="hero">
       <div class="banner-wrapper">
         <img
-          src="capacreate.jpg"
+          src="capacreate2.jpg"
           alt="Create Addon Minecraft Bedrock Banner"
           class="banner-img"
           loading="eager"
@@ -51,19 +56,21 @@
       <div class="section-card">
         <div class="section-header">
           <div class="section-icon about">📘</div>
-          <h2 class="section-title">Sobre o Create Addon Minecraft Bedrock</h2>
+          <h2 class="section-title" data-i18n="about_title">Sobre o Create Addon Minecraft Bedrock</h2>
         </div>
         <div class="section-body">
-          <p>
+          <p data-i18n="about_p1">
             Essa é uma modificação do Addon do VATONAGE, todos os créditos a ele. É um addon simples para o Create que introduz novas possibilidades de automação.
+          </p>
+          <p data-i18n="about_p2">
             Através de novas receitas (razoavelmente) equilibradas, este mod torna dezenas de recursos do Minecraft
             <span class="emphasis">renováveis</span>.
           </p>
-          <p>
+          <p data-i18n="about_p3">
             Por exemplo, o Tufo agora é renovável, oferecendo aos jogadores uma fonte confiável de Minérios e Experiência.
             Isso também inclui itens raros e loot, em uma taxa muito menor.
           </p>
-          <p>
+          <p data-i18n="about_p4">
             Já sonhou em automatizar <span class="emphasis">Diamante</span> ou
             <span class="emphasis">Netherite</span>? Agora é possível!
           </p>
@@ -76,21 +83,108 @@
       <div class="section-card">
         <div class="section-header">
           <div class="section-icon changelog">📋</div>
-          <h2 class="section-title">Changelog (Atualizações)</h2>
+          <h2 class="section-title" data-i18n="changelog_title">Changelog (Atualizações)</h2>
         </div>
         <div class="section-body">
           <ul class="changelog-list">
-            <li>Foi adicionado o VAULT.</li>
-            <li>Foi adicionado o Mechanical Harvester.</li>
-            <li>A Millstone processa vários itens por vez e dropa abaixo ou ao lado.</li>
-            <li>Agora a Crushing Wheel pode esmagar vários itens de uma vez.</li>
-            <li>O Deployer agora alimenta animais.</li>
-            <li>O Deployer com um Machado pode descascar madeira.</li>
-            <li>O Deployer planta mudas e sementes.</li>
-            <li>Agora o Crushed Zinc e Crushed Copper podem ser queimados na fornalha.</li>
-            <li>O Chute pode ser quebrado no modo sobrevivência com uma picareta ou com a mão em 1.5 segundos.</li>
-            <li>Outras correções de bugs e receitas adicionadas.</li>
+            <li data-i18n="changelog_1">Changes in Version 2:</li>
+            <li data-i18n="changelog_2">Added Spout, Pump, Blaze Burner, Fluid Pipes, Smart Chute, Mechanical Crafter, Item Vault, Hatch, Sand Paper, Item Drain</li>
+            <li data-i18n="changelog_3">Deployer now works with more items</li>
+            <li data-i18n="changelog_4">Added Tutorial Menu in Minecraft pause page</li>
+            <li data-i18n="changelog_5">O Chute pode ser quebrado no modo sobrevivência com uma picareta ou com a mão em 1.5 segundos.</li>
+            <li data-i18n="changelog_6">Outras correções de bugs e receitas adicionadas.</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deployer Functionalities Section -->
+    <section class="content-section" id="deployer">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon deployer">🤖</div>
+          <h2 class="section-title" data-i18n="deployer_title">Funcionalidades do Deployer</h2>
+        </div>
+        <div class="section-body">
+          <div class="recipe-category">
+            <div class="recipe-category-title" data-i18n="dep_sub1">Interação com Blocos Vanilla</div>
+            <ul class="recipe-list">
+              <li data-i18n="dep_1">Portas (_door): Abre/fecha</li>
+              <li data-i18n="dep_2">Alçapões (_trapdoor): Abre/fecha</li>
+              <li data-i18n="dep_3">Cercados (_fence_gate): Abre/fecha</li>
+              <li data-i18n="dep_4">Alavancas (lever): Alterna estado</li>
+              <li data-i18n="dep_5">Botões (button): Pressiona (volta após 20 ticks)</li>
+            </ul>
+          </div>
+
+          <div class="recipe-category">
+            <div class="recipe-category-title" data-i18n="dep_sub2">Colocação de Itens</div>
+            <ul class="recipe-list">
+              <li data-i18n="dep_6">Mudas (sapling): Coloca no solo adequado</li>
+              <li data-i18n="dep_7">Plantio (crop_plants): Semente → plantação (farmland) (Wheat, beetroot, pumpkin, melon, torchflower, pitcher, carrot, potato)</li>
+              <li data-i18n="dep_8">Cana-de-açúcar: Coloca perto de água</li>
+              <li data-i18n="dep_9">Cactus: Coloca em areia</li>
+            </ul>
+          </div>
+
+          <div class="recipe-category">
+            <div class="recipe-category-title" data-i18n="dep_sub3">Uso de Ferramentas</div>
+            <ul class="recipe-list">
+              <li data-i18n="dep_10">Espada: Ataca entidades com dano base + encantamentos (Sharpness, Smite, Bane of Arthropods)</li>
+              <li data-i18n="dep_11">Machado: Remove casca de troncos (stripped logs) e rompe blocos de madeira</li>
+              <li data-i18n="dep_12">Pá: Cria caminho (grass_path/dirt_path) e rompe blocos de terra/areia</li>
+              <li data-i18n="dep_13">Enxada: Cria farmland e cobre coarse_dirt → dirt</li>
+              <li data-i18n="dep_14">Picareta: Rompe minérios e pedras</li>
+            </ul>
+          </div>
+
+          <div class="recipe-category">
+            <div class="recipe-category-title" data-i18n="dep_sub4">Uso de Itens Especiais</div>
+            <ul class="recipe-list">
+              <li data-i18n="dep_15">Balde vazio: Preenche de água/lava</li>
+              <li data-i18n="dep_16">Balde com líquido: Coloca água/lava no mundo</li>
+              <li data-i18n="dep_17">Isqueiro (flint_and_steel): Acende fogo</li>
+              <li data-i18n="dep_18">Osso (bone_meal): Aplica fertilizante em plantações, faz árvores crescerem, avança estágios de crescimento</li>
+            </ul>
+          </div>
+
+          <div class="recipe-category">
+            <div class="recipe-category-title" data-i18n="dep_sub5">Interação com Entidades</div>
+            <ul class="recipe-list">
+              <li data-i18n="dep_19">Tosa de ovelhas/mooshroom (shears): Dá lã/cogumelos</li>
+              <li data-i18n="dep_20">Balde em peixes: Coleta peixe em balde</li>
+              <li data-i18n="dep_21">Balde em vaca/goat/mooshroom: Coleta leite</li>
+              <li data-i18n="dep_22">Alimentação/Reprodução: Alimenta animais com seus itens favoritos (Cow, sheep, pig, chicken, rabbit, bee, etc.)</li>
+            </ul>
+          </div>
+
+          <div class="recipe-category">
+            <div class="recipe-category-title" data-i18n="dep_sub6">Receitas de Deployer (Crafting)</div>
+            <ul class="recipe-list">
+              <li data-i18n="dep_23">Casings: Madeira stripping + alloy/brass/copper → casing</li>
+              <li data-i18n="dep_24">Cogwheels: Shaft + planks → cogwheel/large_cogwheel</li>
+              <li data-i18n="dep_25">Rose Quartz: Sand paper + rose quartz → polished rose quartz</li>
+              <li data-i18n="dep_26">Copper waxing: Honeycomb em cobre</li>
+              <li data-i18n="dep_27">Copper dewaxing: Machado em cobre encerado</li>
+            </ul>
+          </div>
+
+          <div class="recipe-category">
+            <div class="recipe-category-title" data-i18n="dep_sub7">Sistema de Filtro</div>
+            <ul class="recipe-list">
+              <li data-i18n="dep_28">Entidade create:deployer_filter para filtrar itens</li>
+              <li data-i18n="dep_29">Propriedade create:deployer_filter_item para definir item filtrado</li>
+            </ul>
+          </div>
+
+          <div class="recipe-category">
+            <div class="recipe-category-title" data-i18n="dep_sub8">Visual e Animação</div>
+            <ul class="recipe-list">
+              <li data-i18n="dep_30">Modo "hand_equipped" para ferramentas</li>
+              <li data-i18n="dep_31">Animações baseadas em RPM (snap to power of 2)</li>
+              <li data-i18n="dep_32">Visual de item na mão do deployer</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -100,61 +194,61 @@
       <div class="section-card">
         <div class="section-header">
           <div class="section-icon recipes">🧪</div>
-          <h2 class="section-title">Lista Completa de Receitas</h2>
+          <h2 class="section-title" data-i18n="recipes_title">Lista Completa de Receitas</h2>
         </div>
         <div class="section-body">
 
           <!-- Mixing -->
           <div class="recipe-category">
-            <div class="recipe-category-title">🫧 Mixing (Mistura)</div>
+            <div class="recipe-category-title" data-i18n="mixing_title">🫧 Mixing (Mistura)</div>
             <ul class="recipe-list">
-              <li>Cascalho e 3 Farinhas de Osso para Calcita.</li>
-              <li>6 Blaze Powder para 1 Blaze Rod.</li>
-              <li>Netherrack e Pederneira para Redstone.</li>
-              <li>Carvão e Blaze Powder para Pólvora.</li>
+              <li data-i18n="mix_1">Cascalho e 3 Farinhas de Osso para Calcita.</li>
+              <li data-i18n="mix_2">6 Blaze Powder para 1 Blaze Rod.</li>
+              <li data-i18n="mix_3">Netherrack e Pederneira para Redstone.</li>
+              <li data-i18n="mix_4">Carvão e Blaze Powder para Pólvora.</li>
             </ul>
           </div>
 
           <!-- Crushing Wheel -->
           <div class="recipe-category">
-            <div class="recipe-category-title">⚙️ Crushing Wheel (Trituração)</div>
+            <div class="recipe-category-title" data-i18n="crushing_title">⚙️ Crushing Wheel (Trituração)</div>
             <ul class="recipe-list">
-              <li>Calcita para Lápis Lazúli.</li>
-              <li>Crying Obsidian para Amethyst Shard.</li>
-              <li>Nether Brick para Fragmentos de Netherite <span class="recipe-note">(extremamente raro — 1 em 50 blocos)</span></li>
-              <li>Soul Sand para Pó de Pedra Luminosa.</li>
-              <li>Soul Soil para Blaze Powder.</li>
-              <li>Tufo para Crushed Raw Zinc e Crushed Raw Copper <span class="recipe-note">(50% de chance cada)</span></li>
+              <li data-i18n="crush_1">Calcita para Lápis Lazúli.</li>
+              <li data-i18n="crush_2">Crying Obsidian para Amethyst Shard.</li>
+              <li data-i18n="crush_3">Nether Brick para Fragmentos de Netherite <span class="recipe-note">(extremamente raro — 1 em 50 blocos)</span></li>
+              <li data-i18n="crush_4">Soul Sand para Pó de Pedra Luminosa.</li>
+              <li data-i18n="crush_5">Soul Soil para Blaze Powder.</li>
+              <li data-i18n="crush_6">Tufo para Crushed Raw Zinc e Crushed Raw Copper <span class="recipe-note">(50% de chance cada)</span></li>
             </ul>
           </div>
 
           <!-- Encased Fan (Washing) -->
           <div class="recipe-category">
-            <div class="recipe-category-title">💧 Encased Fan (Lavagem)</div>
+            <div class="recipe-category-title" data-i18n="washing_title">💧 Encased Fan (Lavagem)</div>
             <ul class="recipe-list">
-              <li>Gelo Compactado para Gelo Azul.</li>
+              <li data-i18n="wash_1">Gelo Compactado para Gelo Azul.</li>
             </ul>
           </div>
 
           <!-- Compacting -->
           <div class="recipe-category">
-            <div class="recipe-category-title">🧱 Compacting (Compactação)</div>
+            <div class="recipe-category-title" data-i18n="compacting_title">🧱 Compacting (Compactação)</div>
             <ul class="recipe-list">
-              <li>Pedregulho para 1 Tufo <span class="recipe-note">(chance de 1 em 9)</span></li>
-              <li>Bloco de Carvão para 1 Diamante <span class="recipe-note">(chance de 1 em 9)</span></li>
+              <li data-i18n="comp_1">Pedregulho para 1 Tufo <span class="recipe-note">(chance de 1 em 9)</span></li>
+              <li data-i18n="comp_2">Bloco de Carvão para 1 Diamante <span class="recipe-note">(chance de 1 em 9)</span></li>
             </ul>
           </div>
 
           <!-- Encased Fan With Blue Fire -->
           <div class="recipe-category">
-            <div class="recipe-category-title">🔥 Encased Fan (Fogo Azul)</div>
+            <div class="recipe-category-title" data-i18n="fire_title">🔥 Encased Fan (Fogo Azul)</div>
             <ul class="recipe-list">
-              <li>Basalto para Netherrack.</li>
-              <li>Obsidian para Crying Obsidian.</li>
-              <li>Carvão Vegetal para Carvão.</li>
-              <li>Papoula para Rosa do Wither.</li>
-              <li>Olho de Aranha para Olho de Aranha Fermentado.</li>
-              <li>Maçã para Fruta do Coro.</li>
+              <li data-i18n="fire_1">Basalto para Netherrack.</li>
+              <li data-i18n="fire_2">Obsidian para Crying Obsidian.</li>
+              <li data-i18n="fire_3">Carvão Vegetal para Carvão.</li>
+              <li data-i18n="fire_4">Papoula para Rosa do Wither.</li>
+              <li data-i18n="fire_5">Olho de Aranha para Olho de Aranha Fermentado.</li>
+              <li data-i18n="fire_6">Maçã para Fruta do Coro.</li>
             </ul>
           </div>
 
@@ -176,12 +270,12 @@
 
     <!-- Download Section -->
     <section class="download-section" id="download">
-      <a href="Create V2.mcaddon" download class="download-btn" id="download-btn">
+      <a href="Create Addon 2.zip" download class="download-btn" id="download-btn">
         <span class="btn-icon">⬇</span>
-        Baixar Addon
+        <span data-i18n-text="download_btn">Baixar Addon</span>
         <span class="btn-ripple"></span>
       </a>
-      <p class="download-subtitle">Create V2.mcaddon • Minecraft Bedrock Edition</p>
+      <p class="download-subtitle" data-i18n="download_sub">Create Addon 2.zip • Minecraft Bedrock Edition</p>
     </section>
 
     <!-- Installation Requirements Warning -->
@@ -189,31 +283,31 @@
       <div class="section-card warning-card">
         <div class="section-header">
           <div class="section-icon warning">⚠️</div>
-          <h2 class="section-title">IMPORTANTE! Requisitos de Instalação</h2>
+          <h2 class="section-title" data-i18n="req_title">IMPORTANTE! Requisitos de Instalação</h2>
         </div>
         <div class="section-body">
-          <p>Para usar este addon, certifique-se de seguir exatamente estes passos:</p>
+          <p data-i18n="req_p">Para usar este addon, certifique-se de seguir exatamente estes passos:</p>
           <ol class="requirements-list">
             <li>
               <span class="req-step">1</span>
-              <span>Crie um novo mundo ou edite um existente.</span>
+              <span data-i18n="req_1">Crie um novo mundo ou edite um existente.</span>
             </li>
             <li>
               <span class="req-step">2</span>
-              <span>Abra a seção <strong>Experimentos (Experiments)</strong>.</span>
+              <span data-i18n="req_2">Abra a seção <strong>Experimentos (Experiments)</strong>.</span>
             </li>
             <li>
               <span class="req-step">3</span>
-              <span>Ative <strong>Beta APIs</strong>. <em class="warning-text">(O addon não funcionará sem isso ativado!)</em></span>
+              <span data-i18n="req_3">Ative <strong>Beta APIs</strong>. <em class="warning-text">(O addon não funcionará sem isso ativado!)</em></span>
             </li>
             <li>
               <span class="req-step">4</span>
-              <span>Para jogadores nas versões <strong>26.20+</strong>, você também deve ativar a opção <strong>Upcoming Creator Features</strong>.</span>
+              <span data-i18n="req_4">Para jogadores nas versões <strong>26.20+</strong>, você também deve ativar a opção <strong>Upcoming Creator Features</strong>.</span>
             </li>
           </ol>
           <div class="warning-note">
             <span class="warning-note-icon">💡</span>
-            <p><strong>Para jogadores do Addon Create do Vatonage:</strong> O jogo às vezes pode ter bugs de cache. Certifique-se de excluir seu addon antigo baixado (CREATE ADDON BY VATONAGE) dos seus arquivos primeiro antes de baixar e importar o novo.</p>
+            <p data-i18n="req_warn"><strong>Para jogadores do Addon Create do Vatonage:</strong> O jogo às vezes pode ter bugs de cache. Certifique-se de excluir seu addon antigo baixado (CREATE ADDON BY VATONAGE) dos seus arquivos primeiro antes de baixar e importar o novo.</p>
           </div>
         </div>
       </div>
@@ -224,27 +318,29 @@
       <div class="section-card">
         <div class="section-header">
           <div class="section-icon comments-icon">💬</div>
-          <h2 class="section-title">Comentários</h2>
+          <h2 class="section-title" data-i18n="comments_title">Comentários</h2>
         </div>
         <div class="section-body">
           <!-- Comment Form -->
           <form class="comment-form" id="comment-form">
             <div class="form-group">
-              <label for="comment-name" class="form-label">SEU NOME</label>
+              <label for="comment-name" class="form-label" data-i18n="comment_name">SEU NOME</label>
               <input
                 type="text"
                 id="comment-name"
                 class="form-input"
+                data-i18n="comment_name_ph"
                 placeholder="Digite seu nome..."
                 maxlength="50"
                 required
               >
             </div>
             <div class="form-group">
-              <label for="comment-text" class="form-label">COMENTÁRIO</label>
+              <label for="comment-text" class="form-label" data-i18n="comment_text">COMENTÁRIO</label>
               <textarea
                 id="comment-text"
                 class="form-input form-textarea"
+                data-i18n="comment_text_ph"
                 placeholder="Escreva seu comentário..."
                 maxlength="400"
                 required
@@ -252,7 +348,7 @@
               <div class="char-counter"><span id="char-count">0</span> / 400</div>
             </div>
             <button type="submit" class="post-comment-btn" id="post-comment-btn">
-              <span>✦</span> Postar Comentário
+              <span>✦</span> <span data-i18n-text="comment_btn">Postar Comentário</span>
             </button>
           </form>
 
@@ -260,7 +356,7 @@
           <div class="comments-list" id="comments-list">
             <!-- Comments will be rendered here by JS -->
           </div>
-          <p class="no-comments" id="no-comments">Nenhum comentário ainda. Seja o primeiro a compartilhar o que achou!</p>
+          <p class="no-comments" id="no-comments" data-i18n="no_comments">Nenhum comentário ainda. Seja o primeiro a compartilhar o que achou!</p>
         </div>
       </div>
     </section>
@@ -277,6 +373,7 @@
 
   </div>
 
+<script src="translations.js"></script>
 <script>
   // ===== Comments System (localStorage) =====
   const STORAGE_KEY = 'createuf_comments';
